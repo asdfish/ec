@@ -10,6 +10,9 @@ std::vector<std::string> FileExtensionRules::output(const std::vector<std::files
   std::vector<std::string> output;
   output.reserve(directory_entries.size() + display_title);
 
+  if(display_title)
+    output.push_back(title);
+
   const std::string default_output = rules[0][0];
 
   for(const std::filesystem::directory_entry& directory_entry : directory_entries) {

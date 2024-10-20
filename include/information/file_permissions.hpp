@@ -3,7 +3,20 @@
 
 #include <information/information_base.hpp>
 
+struct FilePermissionTexts {
+  std::string read;
+  std::string write;
+  std::string execute;
+  std::string separator;
+};
+
 class FilePermissions : public InformationBase {
+  public:
+    FilePermissionTexts permission_texts;
+
+    FilePermissions(const FilePermissionTexts& input_permission_texts);
+    FilePermissions(const std::string& input_title, const FilePermissionTexts& input_permission_texts);
+    std::vector<std::string> output(const std::vector<std::filesystem::directory_entry>& directory_entries) override;
 };
 
 #endif
