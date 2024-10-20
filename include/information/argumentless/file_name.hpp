@@ -1,6 +1,6 @@
 #include <information/argumentless/argumentless_base.hpp>
 
-class Filename : public ArgumentlessBase {
+class FileName : public ArgumentlessBase {
   public:
     using ArgumentlessBase::ArgumentlessBase;
 
