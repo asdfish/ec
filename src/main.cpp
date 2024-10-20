@@ -1,20 +1,24 @@
-#include <information/file_extension_rules.hpp>
+#include <information/file_permissions.hpp>
 #include <utils.hpp>
 #include <iostream>
 
 int main(void) {
   const auto dirents = directory_entries(".");
 
-  FileExtensionRules* fer = new FileExtensionRules(std::vector<std::vector<std::string>>{
-    { " " },
-    { "cpp", ".hpp" }
+  FilePermissions* fp = new FilePermissions({
+    .read = "r",
+    .write = "w",
+    .execute = "x",
+
+    .none = "-",
+    .separator = " ",
   });
-  
-  const auto& fer_o = fer->output(dirents);
-  for(const auto& i : fer_o)
+
+  const auto fp_o = fp->output(dirents);
+  for(const auto& i : fp_o)
     std::cout << i << '\n';
 
-  delete fer;
+  delete fp;
 
   return 0;
 }

@@ -7,6 +7,8 @@ struct FilePermissionTexts {
   std::string read;
   std::string write;
   std::string execute;
+
+  std::string none;
   std::string separator;
 };
 
