@@ -22,7 +22,7 @@ size_t ansi_color_string_length(const std::string& string) {
   return length;
 }
 
-std::vector<std::filesystem::directory_entry> directory_entries(std::string path) {
+std::vector<std::filesystem::directory_entry> directory_entries(const std::filesystem::path& path) {
   std::vector<std::filesystem::directory_entry> directory_entries;
   for(const std::filesystem::directory_entry& directory_entry : std::filesystem::directory_iterator(path))
     directory_entries.push_back(directory_entry);
