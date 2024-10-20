@@ -1,7 +1,9 @@
 #include <information/file_size.hpp>
 
-FileSize::FileSize(const std::vector<Size>& input_sizes) : sizes(input_sizes) {}
-FileSize::FileSize(const std::string& input_title, const std::vector<Size>& input_sizes) : sizes(input_sizes) {
+FileSize::FileSize(const std::vector<Size>& input_sizes):
+  sizes(input_sizes) {}
+FileSize::FileSize(const std::string& input_title, const std::vector<Size>& input_sizes):
+  sizes(input_sizes) {
   display_title = true;
   title = input_title;
 }

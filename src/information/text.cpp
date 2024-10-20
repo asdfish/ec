@@ -1,7 +1,9 @@
 #include <information/text.hpp>
 
-Text::Text(const std::string& input_text) : text(input_text) {};
-Text::Text(const std::string& input_title, const std::string& input_text) : text(input_text) {
+Text::Text(const std::string& input_text):
+  text(input_text) {}
+Text::Text(const std::string& input_title, const std::string& input_text):
+  text(input_text) {
   display_title = true;
   title = input_title;
 };

@@ -1,7 +1,9 @@
 #include <information/file_type.hpp>
 
-FileType::FileType(const FileTypeTexts& input_file_type_texts) : file_type_texts(input_file_type_texts) {}
-FileType::FileType(const std::string& input_title, const FileTypeTexts& input_file_type_texts) : file_type_texts(input_file_type_texts) {
+FileType::FileType(const FileTypeTexts& input_file_type_texts):
+  file_type_texts(input_file_type_texts) {}
+FileType::FileType(const std::string& input_title, const FileTypeTexts& input_file_type_texts):
+  file_type_texts(input_file_type_texts) {
   display_title = true;
   title = input_title;
 }

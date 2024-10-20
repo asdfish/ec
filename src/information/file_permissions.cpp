@@ -2,8 +2,10 @@
 
 #include <iostream>
 
-FilePermissions::FilePermissions(const FilePermissionTexts& input_permission_texts) : permission_texts(input_permission_texts) {}
-FilePermissions::FilePermissions(const std::string& input_title, const FilePermissionTexts& input_permission_texts) : permission_texts(input_permission_texts) {
+FilePermissions::FilePermissions(const FilePermissionTexts& input_permission_texts):
+  permission_texts(input_permission_texts) {}
+FilePermissions::FilePermissions(const std::string& input_title, const FilePermissionTexts& input_permission_texts):
+  permission_texts(input_permission_texts) {
   display_title = true;
   title = input_title;
 }

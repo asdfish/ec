@@ -1,7 +1,9 @@
 #include <information/file_extension_rules.hpp>
 
-FileExtensionRules::FileExtensionRules(const std::vector<std::vector<std::string>>& input_rules) : rules(input_rules) {}
-FileExtensionRules::FileExtensionRules(const std::string& input_title, const std::vector<std::vector<std::string>>& input_rules) : rules(input_rules) {
+FileExtensionRules::FileExtensionRules(const std::vector<std::vector<std::string>>& input_rules):
+  rules(input_rules) {}
+FileExtensionRules::FileExtensionRules(const std::string& input_title, const std::vector<std::vector<std::string>>& input_rules):
+  rules(input_rules) {
   display_title = true;
   title = input_title;
 }
