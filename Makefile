@@ -8,7 +8,7 @@ LD_FLAGS :=
 
 DIRECTORIES := build build/information build/information/argumentless
 OBJECT_FILES := build/main.o $\
-								build/information/file_extension_rules.o build/information/file_last_edited.o build/information/file_permissions.o build/information/file_size.o build/information/file_type.o build/information/text.o $\
+								build/information/file_extension_rules.o build/information/file_permissions.o build/information/file_size.o build/information/file_type.o build/information/text.o $\
 								build/information/argumentless/argumentless_base.o build/information/argumentless/file_extension.o build/information/argumentless/file_name.o build/information/argumentless/relative_path.o $\
 								build/utils.o
 

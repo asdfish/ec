@@ -26,7 +26,7 @@ std::vector<std::string> FileExtensionRules::output(const std::vector<std::files
       for(size_t i = 1; i < rule_vector.size(); i ++) {
         const std::string& rule = rule_vector[i];
 
-        if(filename.substr(filename.length() - rule.length(), rule.length()) == rule) {
+        if(filename.length() >= rule.length() && filename.substr(filename.length() - rule.length(), rule.length()) == rule) {
           next_entry = output_buffer;
           goto add_next_entry;
         }
