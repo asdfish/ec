@@ -12,7 +12,7 @@ OBJECT_FILES := build/main.o build/utils.o $\
 								build/information/file_extension_rules.o build/information/file_permissions.o build/information/file_size.o build/information/file_type.o build/information/text.o $\
 								build/information/argumentless/argumentless_base.o build/information/argumentless/file_extension.o build/information/argumentless/file_name.o build/information/argumentless/relative_path.o $\
 
-all: dc
+all: ec
 
 ${DIRECTORIES}:
 	$(foreach DIRECTORY,$\
@@ -31,8 +31,8 @@ clean:
 ${OBJECT_FILES}: build/%.o: src/%.cpp
 	${CXX} -c $< ${CXX_FLAGS} -o $@
 
-dc: ${DIRECTORIES} ${OBJECT_FILES}
-	${CXX} ${OBJECT_FILES} ${LD_FLAGS} -o dc
-	strip dc
+ec: ${DIRECTORIES} ${OBJECT_FILES}
+	${CXX} ${OBJECT_FILES} ${LD_FLAGS} -o ec
+	strip ec
 
 .phony: all clean
