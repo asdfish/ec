@@ -10,9 +10,13 @@ std::string List::output(void) {
         largest_length = item_length;
     }
 
-    for(std::string& item : column)
-      while(item.length() < largest_length)
+    for(std::string& item : column) {
+      size_t item_length = ansi_color_string_length(item);
+      while(item_length < largest_length) {
         item += " ";
+        item_length ++;
+      }
+    }
   }
 
   std::string output;
