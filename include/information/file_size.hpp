@@ -13,7 +13,6 @@ class FileSize : public InformationBase {
     std::vector<Size> sizes;
 
     FileSize(const std::vector<Size>& input_sizes);
-    FileSize(const std::string& input_title, const std::vector<Size>& input_sizes);
     std::vector<std::string> output(const std::vector<std::filesystem::directory_entry>& directory_entries);
 };
 

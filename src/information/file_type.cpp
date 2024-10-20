@@ -2,19 +2,10 @@
 
 FileType::FileType(const FileTypeTexts& input_file_type_texts):
   file_type_texts(input_file_type_texts) {}
-FileType::FileType(const std::string& input_title, const FileTypeTexts& input_file_type_texts):
-  file_type_texts(input_file_type_texts) {
-  display_title = true;
-  title = input_title;
-}
 
 std::vector<std::string> FileType::output(const std::vector<std::filesystem::directory_entry>& directory_entries) {
   std::vector<std::string> output;
-
-  output.reserve(directory_entries.size() + display_title);
-
-  if(display_title)
-    output.push_back(title);
+  output.reserve(directory_entries.size());
 
   for(const std::filesystem::directory_entry& directory_entry : directory_entries) {
     if(directory_entry.is_block_file())

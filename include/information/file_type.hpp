@@ -17,7 +17,6 @@ struct FileTypeTexts {
 class FileType : public InformationBase {
   public:
     FileType(const FileTypeTexts& input_file_type_texts);
-    FileType(const std::string&, const FileTypeTexts& input_file_type_texts);
     std::vector<std::string> output(const std::vector<std::filesystem::directory_entry>& directory_entries) override;
 
   private:

@@ -2,18 +2,10 @@
 
 FileSize::FileSize(const std::vector<Size>& input_sizes):
   sizes(input_sizes) {}
-FileSize::FileSize(const std::string& input_title, const std::vector<Size>& input_sizes):
-  sizes(input_sizes) {
-  display_title = true;
-  title = input_title;
-}
 
 std::vector<std::string> FileSize::output(const std::vector<std::filesystem::directory_entry>& directory_entries) {
   std::vector<std::string> output;
-  output.reserve(directory_entries.size() + display_title);
-
-  if(display_title)
-    output.push_back(title);
+  output.reserve(directory_entries.size());
 
   for(const std::filesystem::directory_entry& directory_entry : directory_entries) {
     const std::filesystem::path& path = directory_entry.path();

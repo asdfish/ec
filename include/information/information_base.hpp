@@ -9,9 +9,6 @@ class InformationBase {
   public:
     virtual ~InformationBase(void) {};
     virtual std::vector<std::string> output(const std::vector<std::filesystem::directory_entry>& directory_entries) = 0;
-
-    bool display_title = false;
-    std::string title;
 };
 
 #endif

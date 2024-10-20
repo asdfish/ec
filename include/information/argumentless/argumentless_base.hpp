@@ -6,7 +6,6 @@
 class ArgumentlessBase : public InformationBase {
   public:
     ArgumentlessBase(void);
-    ArgumentlessBase(const std::string& input_title);
 };
 
 #endif

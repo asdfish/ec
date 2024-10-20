@@ -2,7 +2,7 @@
 #include <utils.hpp>
 
 std::string List::output(void) {
-  for(std::vector<std::string>& column : information) {
+  for(std::vector<std::string>& column : table) {
     size_t largest_length = 0;
     for(const std::string& item : column) {
       size_t item_length = ansi_color_string_length(item);
@@ -16,9 +16,9 @@ std::string List::output(void) {
   }
 
   std::string output;
-  for(size_t i = 0; i < information[0].size(); i ++) {
-    for(size_t j = 0; j < information.size(); j ++)
-      output += information[j][i] + separator;
+  for(size_t i = 0; i < table[0].size(); i ++) {
+    for(size_t j = 0; j < table.size(); j ++)
+      output += table[j][i] + separator;
     output += "\n";
   }
 

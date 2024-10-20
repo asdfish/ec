@@ -2,18 +2,10 @@
 
 FileExtensionRules::FileExtensionRules(const std::vector<std::vector<std::string>>& input_rules):
   rules(input_rules) {}
-FileExtensionRules::FileExtensionRules(const std::string& input_title, const std::vector<std::vector<std::string>>& input_rules):
-  rules(input_rules) {
-  display_title = true;
-  title = input_title;
-}
 
 std::vector<std::string> FileExtensionRules::output(const std::vector<std::filesystem::directory_entry>& directory_entries) {
   std::vector<std::string> output;
-  output.reserve(directory_entries.size() + display_title);
-
-  if(display_title)
-    output.push_back(title);
+  output.reserve(directory_entries.size());
 
   const std::string default_output = rules[0][0];
 
