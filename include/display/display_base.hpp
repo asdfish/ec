@@ -6,9 +6,11 @@
 class DisplayBase {
   public:
     std::string separator;
-    std::vector<std::vector<std::string>> information;
+    std::vector<std::vector<std::string>> table;
+    std::vector<InformationBase*> information;
 
     DisplayBase(const std::string& separator, const std::vector<InformationBase*>& input_information);
+    void init(void);
     virtual ~DisplayBase(void) {}
     virtual std::string output(void) = 0;
 };

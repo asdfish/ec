@@ -13,6 +13,8 @@ int main(void) {
     new FileName()
   });
 
+  l.init();
+
   std::cout << l.output();
   return 0;
 }
