@@ -1,6 +1,7 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#include <display/display_base.hpp>
 #include <display/list.hpp>
 #include <information/argumentless/file_name.hpp>
 #include <information/file_extension_rules.hpp>
@@ -9,8 +10,8 @@
 #include <information/file_type.hpp>
 #include <information/text.hpp>
 
-static const std::vector<DisplayBase*> flags = {
-  new List("", "", {
+DisplayBase* default_init(void) {
+  return new List("", {
     new Text(" "),
     new FileExtensionRules({
       { "" },
@@ -49,7 +50,20 @@ static const std::vector<DisplayBase*> flags = {
     }),
     new FileName(),
     new Text("\e[0m"),
-  }),
+  });
+}
+
+typedef DisplayBase* (*init_function)(void);
+
+struct Init {
+  std::string flag;
+  init_function function;
+};
+
+static const std::vector<Init> inits = {
+  {
+    "", default_init
+  }
 };
 
 #endif
