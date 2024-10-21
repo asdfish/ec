@@ -13,7 +13,7 @@ int main(int argc, const char* argv[]) {
       for(const Init& j : inits) {
         if(argv[i][0] == '-' && j.flag == argv[i])
           init = i;
-        else
+        else if(argv[i][0] != '-')
           path = argv[i];
       }
 
