@@ -15,7 +15,7 @@ DisplayBase* default_init(void) {
     new Text(" "),
     new FileExtensionRules({
       { "" },
-      { "\e[31m\e[0m", ".git", ".gitignore", ".patch" },
+      { "\e[31m\e[0m", ".git", ".gitignore", ".gitconfig", ".patch" },
       { "", "Makefile" },
       { "\e[34m\e[0m", ".c", ".h" },
       { "\e[34m\e[0m", ".cpp", ".hpp" },
@@ -23,7 +23,7 @@ DisplayBase* default_init(void) {
       { "\e[33m\e[0m", ".js", ".json", ".npm" },
       { "\e[34m\e[0m", ".css" },
       { "\e[31m\e[0m", ".html" },
-      { "\e[33m\e[0m", ".bashrc", ".sh" },
+      { "\e[33m\e[0m", ".bashrc", ".bash_profile", ".bash_history", ".bash_logout", ".sh" },
       { "\e[34m\e[0m", ".lua" },
       { "\e[37m\e[0m", ".ini", ".jsonc", ".yaml", ".toml", ".conf", ".config" },
       { "\e[31m\e[0m", ".mozilla" },
