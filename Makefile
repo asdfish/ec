@@ -7,7 +7,7 @@ CXX_FLAGS := -std=c++17 $\
 
 DIRECTORIES := build build/display build/information build/information/argumentless
 OBJECT_FILES := build/utils.o $\
-								build/display/display_base.o build/display/list.o $\
+								build/display/compact.o build/display/display_base.o build/display/list.o $\
 								build/information/file_extension_rules.o build/information/file_permissions.o build/information/file_size.o build/information/file_type.o build/information/text.o $\
 								build/information/argumentless/argumentless_base.o build/information/argumentless/file_extension.o build/information/argumentless/file_name.o build/information/argumentless/relative_path.o
 
