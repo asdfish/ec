@@ -32,7 +32,8 @@ DisplayBase* default_init(void) {
       { "", ".md" },
       { "\e[34m\e[0m", ".jpg", ".png", ".svg" },
       { "", ".pdf", ".epub" },
-      { "", ".txt", ".log" }
+      { "", ".txt", ".log" },
+      { "", ".o" }
     }),
     new FileSize({
       { "\e[33mB\e[0m", 1 },
@@ -58,33 +59,6 @@ DisplayBase* default_init(void) {
 DisplayBase* quiet_init(void) {
   return new Compact("", {
     new Text(" "),
-    new FileExtensionRules({
-      { "" },
-      { "\e[31m\e[0m", ".git", ".gitignore", ".gitconfig", ".patch" },
-      { "", "Makefile" },
-      { "\e[34m\e[0m", ".c", ".h" },
-      { "\e[34m\e[0m", ".cpp", ".hpp" },
-      { "\e[33m\e[0m", ".rs", ".cargo" },
-      { "\e[33m\e[0m", ".js", ".json", ".npm" },
-      { "\e[34m\e[0m", ".css" },
-      { "\e[31m\e[0m", ".html" },
-      { "\e[33m\e[0m", ".bashrc", ".bash_profile", ".bash_history", ".bash_logout", ".sh" },
-      { "\e[34m\e[0m", ".lua" },
-      { "\e[37m\e[0m", ".ini", ".jsonc", ".yaml", ".toml", ".conf", ".config" },
-      { "\e[31m\e[0m", ".mozilla" },
-      { "", ".mp3", ".wav", ".opus", ".flac" },
-      { "󰕧", ".mp4", ".mkv" },
-      { "", ".md" },
-      { "\e[34m\e[0m", ".jpg", ".png", ".svg" },
-      { "", ".pdf", ".epub" },
-      { "", ".txt", ".log" }
-    }),
-    new FileSize({
-      { "\e[33mB\e[0m", 1 },
-      { "\e[33mKB\e[0m", 1000 },
-      { "\e[33mMB\e[0m", 1000000 },
-      { "\e[33mGB\e[0m", 1000000000 },
-    }),
     new FileType({
       "",
       "",
