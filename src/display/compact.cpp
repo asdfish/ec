@@ -23,7 +23,6 @@ std::string Compact::output(void) {
       length = 0;
     }
   }
-  output += "\n";
 
   return output;
 }

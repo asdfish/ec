@@ -10,9 +10,12 @@ class DisplayBase {
     std::vector<InformationBase*> information;
 
     DisplayBase(const std::string& separator, const std::vector<InformationBase*>& input_information);
-    void init(const std::filesystem::path& path);
+    void init(const std::vector<std::filesystem::path>& paths);
     virtual ~DisplayBase(void) {}
     virtual std::string output(void) = 0;
+
+  private:
+    void process_directory_entries(const std::vector<std::filesystem::directory_entry>& directory_entries);
 };
 
 #endif

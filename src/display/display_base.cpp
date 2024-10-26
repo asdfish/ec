@@ -2,12 +2,17 @@
 #include <utils.hpp>
 
 DisplayBase::DisplayBase(const std::string& input_separator, const std::vector<InformationBase*>& input_information):
-  separator(input_separator), information(input_information) {
+  separator(input_separator), information(input_information) {}
+
+void DisplayBase::init(const std::vector<std::filesystem::path>& paths) {
+  std::vector<std::filesystem::directory_entry> directory_entries;
+  for(const std::filesystem::path& path : paths)
+    vector_cat(directory_entries, get_directory_entries(path));
+
+  process_directory_entries(directory_entries);
 }
 
-void DisplayBase::init(const std::filesystem::path& path) {
-  std::vector<std::filesystem::directory_entry> directory_entries = get_directory_entries(path);
-
+void DisplayBase::process_directory_entries(const std::vector<std::filesystem::directory_entry>& directory_entries) {
   std::vector<std::vector<std::string>> table;
   table.reserve(information.size());
   for(InformationBase* information_base : information)
