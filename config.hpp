@@ -15,7 +15,7 @@ DisplayBase* default_init(void) {
     new Text(" "),
     new FileExtensionRules({
       { "" },
-      { "\e[31m\e[0m", ".git", ".gitignore", ".gitconfig", ".patch" },
+      { "\e[31m\e[0m", ".git", ".gitignore", ".gitconfig", ".gitmodules", ".patch" },
       { "", "Makefile" },
       { "\e[34m\e[0m", ".c", ".h" },
       { "\e[34m\e[0m", ".cpp", ".hpp" },
