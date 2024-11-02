@@ -40,7 +40,7 @@ DisplayBase* default_init(void) {
       { "\e[33mKB\e[0m", 1000 },
       { "\e[33mMB\e[0m", 1000000 },
       { "\e[33mGB\e[0m", 1000000000 },
-    }),
+    }, "???"),
     new FileType({
       "",
       "",
