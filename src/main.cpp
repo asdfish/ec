@@ -26,16 +26,11 @@ next_argument:
   if(paths.size() == 0)
     paths.push_back(".");
 
-  for(const std::filesystem::path& path : paths)
-    if(!std::filesystem::is_directory(path)) {
-      std::cerr << path << " is not a directory.\n";
-      return -1;
-    }
-
   display = inits[init].function();
 
   if(display != NULL) {
     display->init(paths);
+
     std::cout << display->output();
 
     for(InformationBase* i : display->information)

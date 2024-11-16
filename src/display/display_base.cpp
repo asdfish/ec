@@ -7,7 +7,10 @@ DisplayBase::DisplayBase(const std::string& input_separator, const std::vector<I
 void DisplayBase::init(const std::vector<std::filesystem::path>& paths) {
   std::vector<std::filesystem::directory_entry> directory_entries;
   for(const std::filesystem::path& path : paths)
-    vector_cat(directory_entries, get_directory_entries(path));
+    if(std::filesystem::is_directory(path))
+      vector_cat(directory_entries, get_directory_entries(path));
+    else if(std::filesystem::is_regular_file(path))
+      directory_entries.push_back(std::filesystem::directory_entry(path));
 
   process_directory_entries(directory_entries);
 }
