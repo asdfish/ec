@@ -5,9 +5,9 @@
 #include <display/display_base.hpp>
 #include <display/list.hpp>
 #include <information/argumentless/file_name.hpp>
+#include <information/failable/file_size.hpp>
 #include <information/file_extension_rules.hpp>
 #include <information/file_permissions.hpp>
-#include <information/file_size.hpp>
 #include <information/file_type.hpp>
 #include <information/text.hpp>
 DisplayBase* default_init(void) {
