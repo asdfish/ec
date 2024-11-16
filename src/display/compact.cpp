@@ -5,7 +5,6 @@ extern "C" {
   #include <unistd.h>
 };
 
-
 std::string Compact::output(void) {
   struct winsize window_size;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &window_size);
@@ -14,11 +13,12 @@ std::string Compact::output(void) {
   size_t length = 0;
 
   std::string output;
-  for(const std::string& i : table) {
-    output += i;
 
-    length += i.length();
-    if(length > width) {
+  for(unsigned int i = 0; i < table.size(); i ++) {
+    output += table[i];
+
+    length += table[i].length();
+    if(length > width || i == table.size() - 1) {
       output += "\n";
       length = 0;
     }

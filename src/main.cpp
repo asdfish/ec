@@ -11,9 +11,9 @@ int main(int argc, const char* argv[]) {
   if(argc != 1)
     for(int i = 1; i < argc; i ++) {
       if(argv[i][0] == '-')
-        for(const Init& j : inits)
-          if(j.flag == argv[i]) {
-            init = i;
+        for(unsigned int j = 0; j < inits.size(); j ++)
+          if(inits[j].flag == argv[i]) {
+            init = j;
             goto next_argument;
           }
 
@@ -22,7 +22,8 @@ int main(int argc, const char* argv[]) {
 next_argument:
       continue;
     }
-  else
+
+  if(paths.size() == 0)
     paths.push_back(".");
 
   for(const std::filesystem::path& path : paths)
