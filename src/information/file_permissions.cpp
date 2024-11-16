@@ -1,6 +1,18 @@
 #include <information/file_permissions.hpp>
 #include <array>
 
+constexpr static const std::array<std::filesystem::perms, 9> processed_perms = {
+  std::filesystem::perms::owner_read,
+  std::filesystem::perms::owner_write,
+  std::filesystem::perms::owner_exec,
+  std::filesystem::perms::group_read,
+  std::filesystem::perms::group_write,
+  std::filesystem::perms::group_exec,
+  std::filesystem::perms::others_read,
+  std::filesystem::perms::others_write,
+  std::filesystem::perms::others_exec,
+};
+
 FilePermissions::FilePermissions(const FilePermissionTexts& input_permission_texts):
   permission_texts(input_permission_texts) {}
 
@@ -12,19 +24,6 @@ std::vector<std::string> FilePermissions::output(const std::vector<std::filesyst
     const std::filesystem::perms permissions = std::filesystem::status(directory_entry.path()).permissions();
 
     std::string output_buffer;
-
-    const std::array<std::filesystem::perms, 9> processed_perms = {
-      std::filesystem::perms::owner_read,
-      std::filesystem::perms::owner_write,
-      std::filesystem::perms::owner_exec,
-      std::filesystem::perms::group_read,
-      std::filesystem::perms::group_write,
-      std::filesystem::perms::group_exec,
-      std::filesystem::perms::others_read,
-      std::filesystem::perms::others_write,
-      std::filesystem::perms::others_exec,
-    };
-
     for(unsigned int i = 0; i < processed_perms.size(); i ++) {
       if((permissions & processed_perms[i]) != std::filesystem::perms::none)
         switch(i % 3) {
@@ -40,7 +39,8 @@ std::vector<std::string> FilePermissions::output(const std::vector<std::filesyst
         }
       else
         output_buffer += permission_texts.none;
-      if(i % 3 == 2)
+
+      if(i % 3 == 2 && i != processed_perms.size() - 1)
         output_buffer += permission_texts.separator;
     }
 

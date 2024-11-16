@@ -10,10 +10,11 @@
 #include <information/file_permissions.hpp>
 #include <information/file_type.hpp>
 #include <information/text.hpp>
+
 DisplayBase* default_init(void) {
   return new List("", {
     new Text(" "),
-    new FilePermissions({"r", "w", "x", "-", " "}),
+    /*new FilePermissions({"r", "w", "x", "-", " "}),*/
     new FileExtensionRules({
       { "" },
       { "\e[31m\e[0m", ".git", ".gitignore", ".gitconfig", ".gitmodules", ".patch" },
