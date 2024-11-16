@@ -1,6 +1,5 @@
 #include <information/file_permissions.hpp>
-
-#include <iostream>
+#include <array>
 
 FilePermissions::FilePermissions(const FilePermissionTexts& input_permission_texts):
   permission_texts(input_permission_texts) {}
@@ -14,48 +13,36 @@ std::vector<std::string> FilePermissions::output(const std::vector<std::filesyst
 
     std::string output_buffer;
 
-    if((permissions & std::filesystem::perms::owner_read) != std::filesystem::perms::none)
-      output_buffer += permission_texts.read;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::owner_write) != std::filesystem::perms::none)
-      output_buffer += permission_texts.write;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::owner_exec) != std::filesystem::perms::none)
-      output_buffer += permission_texts.execute;
-    else
-      output_buffer += permission_texts.none;
+    const std::array<std::filesystem::perms, 9> processed_perms = {
+      std::filesystem::perms::owner_read,
+      std::filesystem::perms::owner_write,
+      std::filesystem::perms::owner_exec,
+      std::filesystem::perms::group_read,
+      std::filesystem::perms::group_write,
+      std::filesystem::perms::group_exec,
+      std::filesystem::perms::others_read,
+      std::filesystem::perms::others_write,
+      std::filesystem::perms::others_exec,
+    };
 
-    output_buffer += permission_texts.separator;
-
-    if((permissions & std::filesystem::perms::group_read) != std::filesystem::perms::none)
-      output_buffer += permission_texts.read;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::group_write) != std::filesystem::perms::none)
-      output_buffer += permission_texts.write;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::group_exec) != std::filesystem::perms::none)
-      output_buffer += permission_texts.execute;
-    else
-      output_buffer += permission_texts.none;
-
-    output_buffer += permission_texts.separator;
-
-    if((permissions & std::filesystem::perms::others_read) != std::filesystem::perms::none)
-      output_buffer += permission_texts.read;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::others_write) != std::filesystem::perms::none)
-      output_buffer += permission_texts.write;
-    else
-      output_buffer += permission_texts.none;
-    if((permissions & std::filesystem::perms::others_exec) != std::filesystem::perms::none)
-      output_buffer += permission_texts.execute;
-    else
-      output_buffer += permission_texts.none;
+    for(unsigned int i = 0; i < processed_perms.size(); i ++) {
+      if((permissions & processed_perms[i]) != std::filesystem::perms::none)
+        switch(i % 3) {
+          case 0:
+            output_buffer += permission_texts.read;
+            break;
+          case 1:
+            output_buffer += permission_texts.write;
+            break;
+          case 2:
+            output_buffer += permission_texts.execute;
+            break;
+        }
+      else
+        output_buffer += permission_texts.none;
+      if(i % 3 == 2)
+        output_buffer += permission_texts.separator;
+    }
 
     output.push_back(output_buffer);
   }
