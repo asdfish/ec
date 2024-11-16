@@ -9,7 +9,7 @@ class FailableBase : public InformationBase {
     std::vector<std::string> output(const std::vector<std::filesystem::directory_entry>& directory_entries) override;
 
   private:
-    virtual std::string process_directory_entry(std::filesystem::directory_entry) = 0;
+    virtual std::string process_directory_entry(const std::filesystem::directory_entry& directory_entry) = 0;
 };
 
 #endif
