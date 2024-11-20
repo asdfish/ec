@@ -1,8 +1,8 @@
 CXX ?= c++
-CXX_FLAGS := -std=c++17 $\
-							   -Wall -Wextra $\
-								 -O2 -march=native -pipe $\
-								 -Iinclude
+CXXFLAGS ?= -O2 -march=native -pipe
+COMMONFLAGS := -std=c++17 $\
+							 -Wall -Wextra $\
+							 -Iinclude
 
 # Comment/uncomment to enable/disable processing header files
 PROCESS_HEADER_FILES := yes
@@ -22,7 +22,7 @@ INSTALL_DIRECTORY := /usr/local/bin/
 EC_REQUIREMENTS := ${PROCESSED_HEADER_FILES} ${OBJECT_FILES}
 
 define COMPILE
-${CXX} -c $(1) ${CXX_FLAGS} -o $(2)
+${CXX} -c $(1) ${CXXFLAGS} ${COMMONFLAGS} -o $(2)
 
 endef
 define REMOVE
@@ -50,7 +50,7 @@ build/%.o: src/%.cpp
 	$(call COMPILE,$<,$@)
 
 ec: ${EC_REQUIREMENTS}
-	${CXX} ${OBJECT_FILES} ${CXX_FLAGS} -o ec
+	${CXX} ${OBJECT_FILES} ${CXXFLAGS} ${COMMONFLAGS} -o ec
 
 clean:
 	$(call REMOVE_LIST,${EC_REQUIREMENTS})
