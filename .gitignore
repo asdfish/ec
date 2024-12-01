@@ -1,4 +1,5 @@
 *.o
 *.gch
 *.pch
-ec
+*~
+ec*
